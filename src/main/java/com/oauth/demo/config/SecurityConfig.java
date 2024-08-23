@@ -17,7 +17,8 @@ public class SecurityConfig {
     SecurityFilterChain defaultSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorizeRequest -> authorizeRequest.anyRequest().authenticated())
-                .formLogin(form -> form.defaultSuccessUrl("/hello",true));
+                //.formLogin(form -> form.defaultSuccessUrl("/hello",true));
+                .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("http://localhost:3000/dashboard",true));
         return httpSecurity.build();
     }
 }
